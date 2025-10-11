@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kedai Batatua - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="min-h-screen relative overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('Assets/Hero\ Image\ \(2\).png');">
+            <div class="absolute inset-0 bg-white/40 backdrop-blur-sm"></div>
+        </div>
+
+        <!-- Login Form -->
+        <div class="relative z-10 flex items-center justify-center min-h-screen px-4">
+            <div class="w-full max-w-md">
+                <div class="text-center mb-8">
+                    <h1 class="text-5xl font-bold text-gray-900 mb-2">LOGIN</h1>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Email Field -->
+                    <div>
+                        <label for="email" class="block text-lg font-semibold text-gray-900 mb-2">
+                            Username
+                        </label>
+                        <input
+                            type="email"
+                            id="email"
+                            class="w-full px-4 py-3 rounded-lg border-2 border-gray-300 bg-white focus:outline-none focus:border-gray-400 text-gray-900"
+                         />
+                    </div>
+
+                    <!-- Password Field -->
+                    <div>
+                        <label for="password" class="block text-lg font-semibold text-gray-900 mb-2">
+                            Password
+                        </label>
+                        <div class="relative">
+                            <input
+                                type="password"
+                                id="password"
+                                class="w-full px-4 py-3 rounded-lg border-2 border-gray-300 bg-white focus:outline-none focus:border-gray-400 text-gray-900 pr-12"
+                            />
+                            <button
+                                type="button"
+                                onclick="togglePassword()"
+                                class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-gray-800"
+                            >
+                                <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                    <line id="eyeSlash" x1="2" y1="2" x2="22" y2="22" stroke="transparent"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Sign In Button -->
+                    <button
+                        onclick="handleLogin()"
+                        class="w-full bg-gray-800 hover:bg-gray-900 text-white font-semibold py-3 rounded-lg transition-colors duration-200 text-lg"
+                    >
+                        SIGN IN
+                    </button>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.location.href = 'homepage.html';
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const eyeSlash = document.getElementById('eyeSlash');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeSlash.setAttribute('stroke', 'currentColor');
+            } else {
+                passwordInput.type = 'password';
+                eyeSlash.setAttribute('stroke', 'transparent');
+            }
+        }
+
+        function handleLogin() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (email && password) {
+                console.log('Login attempt:', { email, password });
+                alert('Login functionality would be connected here!');
+            } else {
+                alert('Please fill in all fields');
+            }
+        }
+    </script>
+</body>
+</html>
