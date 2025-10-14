@@ -15,7 +15,9 @@
                 <!-- Logo -->
                 <div class="flex items-center -ml-2">
                     <span class="text-2xl font-bold text-black font-['Playfair_Display']">
-                        BATATUA<span class="text-black-200">1928</span>
+                        <a href="dashboard-utama.html"> 
+                            BATATUA<span class="text-black-200">1928</span>
+                        </a>
                     </span>
                 </div>
                 <!-- Desktop Menu -->
@@ -36,8 +38,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#gallery" class="text-black transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">
-                            GALLERY
+                        <a href="contact.html" class="text-black transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">
+                            CONTACT
                         </a>
                       </li>
                     <li>    
@@ -58,10 +60,10 @@
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="hidden md:hidden bg-white/95 bakackdrop-blur-sm border-t border-gray-100">
                 <ul class="flex flex-col px-6 py-4 text-sm font-semibold tracking-wide">
-                    <li><a href="index.html" class="block py-3 text-gray-700 hover:text-red-700 transition-colors duration-300">HOME</a></li>
-                    <li><a href="#about" class="block py-3 text-gray-700 hover:text-red-700 transition-colors duration-300">ABOUT</a></li>
+                    <li><a href="Homepage.html" class="block py-3 text-gray-700 hover:text-red-700 transition-colors duration-300">HOME</a></li>
+                    <li><a href="Homepage.html" class="block py-3 text-gray-700 hover:text-red-700 transition-colors duration-300">ABOUT</a></li>
                     <li><a href="menu.html" class="block py-3 text-gray-700 hover:text-red-700 transition-colors duration-300">MENU</a></li>
-                    <li><a href="#gallery" class="block py-3 text-gray-700 hover:text-red-700 transition-colors duration-300">GALLERY</a></li>
+                    <li><a href="contact.html" class="block py-3 text-gray-700 hover:text-red-700 transition-colors duration-300">CONTACT</a></li>
                     <li><a href="#location" class="block py-3 text-gray-700 hover:text-red-700 transition-colors duration-300">LOCATION</a></li>
                 </ul>
             </div>
@@ -76,11 +78,10 @@
         </div>
     </section>
 
-    <!-- Products Section -->
     <div class="bg-[#fff8f0] min-h-screen py-10 px-5">
         <h2 class="text-3xl font-bold text-center mb-8">Product Kami</h2>
 
-        <!-- Filter buttons -->
+        <!-- menu filter -->
         <div class="flex justify-center gap-4 mb-8 flex-wrap">
             <button class="category-btn text-black transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full px-4 py-2" data-category="all">All</button>
             <button class="category-btn text-black transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full px-4 py-2" data-category="makanan-ringan">Makanan Ringan</button>
@@ -89,93 +90,110 @@
             <button class="category-btn text-black transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full px-4 py-2" data-category="coffee">Coffee</button>
         </div>
 
-        <!-- Card -->
         <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            <!-- Mie Bangladesh Jadoel -->
             <div class="product-card bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition" data-category="makanan-berat">
-                <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400&h=300&fit=crop" alt="Mie Bangladesh Jadoel" class="w-full h-48 object-cover">
+                <img src="Assets/mie bang.jpg" alt="Mie Bangladesh Jadoel" class="w-full h-48 object-cover">
                 <div class="p-4">
-                    <h3 class="text-xl font-semibold text-gray-800">Mie Bangladesh Jadoel</h3>
-                    <p class="text-black font-bold mt-2">Rp 20.000</p>
+                    <h3 class="text-xl font-semibold text-gray-800">Mie Bangladesh</h3>
+                    <p class="text-black font-bold mt-2">Rp 15.000</p>
                 </div>
             </div>
 
-            <!-- Sosi Crispy -->
+          
             <div class="product-card bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition" data-category="makanan-ringan">
-                <img src="https://images.unsplash.com/photo-1612392062422-ef19b42f74df?w=400&h=300&fit=crop" alt="Sosi Crispy" class="w-full h-48 object-cover">
+                <img src="Assets/sosis.jpg" alt="Sosi Crispy" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h3 class="text-xl font-semibold text-gray-800">Sosi Crispy</h3>
                     <p class="text-black font-bold mt-2">Rp 16.000</p>
                 </div>
             </div>
 
-            <!-- Sego Ayam Teriyaki -->
+ 
             <div class="product-card bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition" data-category="makanan-berat">
-                <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=400&h=300&fit=crop" alt="Sego Ayam Teriyaki" class="w-full h-48 object-cover">
+                <img src="Assets/ayaam teriyaki.jpg" alt="Sego Ayam Teriyaki" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h3 class="text-xl font-semibold text-gray-800">Sego Ayam Teriyaki</h3>
                     <p class="text-black font-bold mt-2">Rp 22.000</p>
                 </div>
             </div>
 
-            <!-- Kentang Goreng -->
+      
             <div class="product-card bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition" data-category="makanan-ringan">
-                <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&h=300&fit=crop" alt="Kentang Goreng" class="w-full h-48 object-cover">
+                <img src="Assets/kentang.jpg" alt="Kentang Goreng" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h3 class="text-xl font-semibold text-gray-800">Kentang Goreng</h3>
                     <p class="text-black font-bold mt-2">Rp 15.000</p>
                 </div>
             </div>
 
-            <!-- Teh O -->
+       
             <div class="product-card bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition" data-category="non-coffe">
-                <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&h=300&fit=crop" alt="Teh O" class="w-full h-48 object-cover">
+                <img src="Assets/Esteh.jpg" alt="Teh O" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h3 class="text-xl font-semibold text-gray-800">Teh O</h3>
                     <p class="text-black font-bold mt-2">Rp 8.000</p>
                 </div>
             </div>
 
-            <!-- Indomie Goreng Telor -->
             <div class="product-card bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition" data-category="makanan-berat">
-                <img src="https://images.unsplash.com/photo-1623341214825-9f4f963727da?w=400&h=300&fit=crop" alt="Indomie Goreng Telor" class="w-full h-48 object-cover">
+                <img src="Assets/menu mie.jpg" alt="Indomie Goreng Telor" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h3 class="text-xl font-semibold text-gray-800">Indomie Goreng Telor</h3>
                     <p class="text-black font-bold mt-2">Rp 15.000</p>
                 </div>
             </div>
 
-            <!-- Teh Tarik -->
-            <div class="product-card bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition" data-category="coffee">
-                <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=400&h=300&fit=crop" alt="Teh Tarik" class="w-full h-48 object-cover">
+            <div class="product-card bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition" data-category="non-coffe">
+                <img src="Assets/teh tarik.jpg" alt="Teh Tarik" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h3 class="text-xl font-semibold text-gray-800">Teh Tarik</h3>
                     <p class="text-black font-bold mt-2">Rp 15.000</p>
                 </div>
             </div>
 
-            <!-- Es Cokelat jadoel -->
+      
             <div class="product-card bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition" data-category="non-coffe">
-                <img src="https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?w=400&h=300&fit=crop" alt="Es Cokelat jadoel" class="w-full h-48 object-cover">
+                <img src="Assets/Cokelat.jpg" alt="Es Cokelat jadoel" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h3 class="text-xl font-semibold text-gray-800">Es Cokelat jadoel</h3>
                     <p class="text-black font-bold mt-2">Rp 16.000</p>
                 </div>
             </div>
 
-            <!-- Milo Hangat -->
+
             <div class="product-card bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition" data-category="coffee">
-                <img src="https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=400&h=300&fit=crop" alt="Milo Hangat" class="w-full h-48 object-cover">
+                <img src="Assets/america.jpg" alt="americano" class="w-full h-48 object-cover">
                 <div class="p-4">
-                    <h3 class="text-xl font-semibold text-gray-800">Milo Hangat</h3>
-                    <p class="text-black font-bold mt-2">Rp 10.000</p>
+                    <h3 class="text-xl font-semibold text-gray-800">ice Americano</h3>
+                    <p class="text-black font-bold mt-2">Rp 9.000</p>
+                </div>
+            </div>
+                <div class="product-card bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition" data-category="makanan-ringan">
+                <img src="Assets/fish and chips.jpg" alt="Milo Hangat" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Fish and Chips</h3>
+                    <p class="text-black font-bold mt-2">Rp 25.000</p>
+                </div>
+            </div>
+                <div class="product-card bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition" data-category="non-coffe">
+                <img src="Assets/blue dragon.jpg" alt="Blue Dragon" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Blue Dragon</h3>
+                    <p class="text-black font-bold mt-2">Rp 17.000</p>
+                </div>
+            </div>
+                <div class="product-card bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition" data-category="makanan-ringan">
+                <img src="Assets/roti-bakar.jpg" alt="roti-bakar" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Roti Bakar</h3>
+                    <p class="text-black font-bold mt-2">Rp 8.000</p>
                 </div>
             </div>
         </div>
 
         <!-- Back Button -->
         <div class="flex justify-center mt-12 mb-8">
-            <a href="index.html"></a>
+            <a href="Homepage.html"></a>
             <button onclick="history.back()" class="bg-gray-800 text-white px-10 py-3 rounded-lg text-lg font-semibold hover:bg-gray-700 transition duration-300 shadow-md">
                 BACK
             </button>
@@ -186,13 +204,12 @@
     <footer id="location" class="border-t-2 border-black text-black py-12">
         <div class="container mx-auto px-4">
             <div class="flex justify-center grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left place-items-center md:place-items-start">
-                <!-- Location -->
                 <div>
                     <h3 class="text-2xl font-bold mb-4">Lokasi</h3>
                     <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i>Jl. Ketintang Madya</p>
                     <p class="mb-2">No. 82, Surabaya.</p>
                 </div>
-                <!-- Hours -->
+       
                 <div>
                     <h3 class="text-2xl font-bold mb-4">Jam Operasional</h3>
                     <p class="mb-2"><i class="fas fa-clock mr-2"></i>Setiap Hari</p>
@@ -200,7 +217,6 @@
                     <p class="mt-4 italic">"Semangat Muda Menolak Tua"</p>
                 </div>
 
-                <!-- Contact -->
                 <div>
                     <h3 class="text-2xl font-bold mb-4">Contact us</h3>
                     <div class="flex justify-center md:justify-start space-x-4">
@@ -220,7 +236,7 @@
     </footer>
 
     <script>
-        // Navbar scroll effect
+
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
@@ -232,20 +248,18 @@
             }
         });
 
-        // Mobile menu toggle
+     
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Close mobile menu when clicking on a link
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', function() {
                 document.getElementById('mobile-menu').classList.add('hidden');
             });
         });
 
-        // Category Filter
         const categoryBtns = document.querySelectorAll('.category-btn');
         const productCards = document.querySelectorAll('.product-card');
 
@@ -253,7 +267,7 @@
             btn.addEventListener('click', function() {
                 const category = this.getAttribute('data-category');
                 
-                // Filter products
+        
                 productCards.forEach(card => {
                     if (category === 'all' || card.getAttribute('data-category') === category) {
                         card.style.display = 'block';
@@ -264,7 +278,7 @@
             });
         });
 
-        // Smooth scrolling for anchor links
+    
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
