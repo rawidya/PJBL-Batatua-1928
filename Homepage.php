@@ -1,3 +1,19 @@
+<?php
+require_once __DIR__ . '/config.php';
+$conn = get_db_connection();
+$res = $conn->query("SELECT name, price, image_path FROM menu_items ORDER BY id DESC LIMIT 3");
+$featured = $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
+if ($res) { $res->close(); }
+
+// Load gallery images for homepage section
+$gallery = [];
+$gres = $conn->query('SELECT image_path FROM gallery ORDER BY id DESC LIMIT 5');
+if ($gres) {
+    while ($row = $gres->fetch_assoc()) { $gallery[] = $row; }
+    $gres->close();
+}
+$conn->close();
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -6,51 +22,44 @@
     <title>Kedai Batatua 1928</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta http-equiv="Cache-Control" content="no-store" />
 </head>
 <body class="bg-amber-50 scroll-smooth">
-    <!-- Header -->
     <header>
         <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300">
             <div class="container mx-auto px-6 flex items-center justify-between">
-                <!-- Logo -->
-              <div class="flex items-center -ml-2">
-                <a href="dashboard-utama.html">
-                            <h1 class="text-black-300 text-2xl">BATATUA1928</h1>
-              </a>
-                        </div> 
-
-
-                <!-- Desktop Menu -->
+                <div class="flex items-center -ml-2">
+                    <a href="Homepage.php">
+                        <h1 class="text-black-300 text-2xl">BATATUA1928</h1>
+                    </a>
+                </div> 
                 <ul class="hidden md:flex items-center space-x-10 text-sm font-semibold tracking-wide">
                     <li><a href="#home" class="text-black hover:text-black-300 transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">HOME</a></li>
                     <li><a href="#about" class="text-black hover:text-black-300 transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">ABOUT</a></li>
-                    <li><a href="menu.html" class="text-black hover:text-black-300 transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">MENU</a></li>
-                    <li><a href="contact.html" class="text-black hover:text-black-300 transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">CONTACT</a></li>
+                    <li><a href="menu.php" class="text-black hover:text-black-300 transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">MENU</a></li>
+                    <li><a href="contact.php" class="text-black hover:text-black-300 transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">CONTACT</a></li>
                     <li><a href="#location" class="text-black hover:text-black-300 transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">LOCATION</a></li>
+                    <li><a href="Login-for-admin.php" class="text-black hover:text-black-300 transition-colors duration-300">LOGIN</a></li>
                 </ul>
-
-                <!-- Mobile Menu Button -->
                 <button id="mobile-menu-btn" class="md:hidden focus:outline-none">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
             </div>
-
-            <!-- Mobile Menu -->
             <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-sm border-t border-gray-100">
                 <ul class="flex flex-col px-6 py-4 text-sm font-semibold tracking-wide">
                     <li><a href="#home" class="block py-3 text-gray-700 hover:text-red-700 transition-colors duration-300">HOME</a></li>
                     <li><a href="#about" class="block py-3 text-gray-700 hover:text-red-700 transition-colors duration-300">ABOUT</a></li>
                     <li><a href="#products" class="block py-3 text-gray-700 hover:text-red-700 transition-colors duration-300">PRODUCTS</a></li>
-                    <li><a href="contact.html" class="block py-3 text-gray-700 hover:text-red-700 transition-colors duration-300">CONTACT</a></li>
+                    <li><a href="contact.php" class="block py-3 text-gray-700 hover:text-red-700 transition-colors duration-300">CONTACT</a></li>
                     <li><a href="#location" class="block py-3 text-gray-700 hover:text-red-700 transition-colors duration-300">LOCATION</a></li>
+                    <li><a href="Login-for-admin.php" class="block py-3 text-gray-700 hover:text-red-700 transition-colors duration-300">LOGIN</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section id="home" class="relative h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('Assets/Hero Image (2).png');">
         <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/40"></div>
         <div class="relative z-10 text-center text-white px-4">
@@ -59,7 +68,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="py-20 bg-[#fff9e6]">
         <div class="flex flex-col md:flex-row items-center justify-center space-x-0 md:space-x-6 p-6">
             <img src="Assets/Rectangle 1.png" alt="logo batatua" class="w-80 md:w-96 rounded-lg mb-6 md:mb-0">
@@ -69,49 +77,27 @@
         </div>
     </section>
 
-    <!-- Products Section -->
     <section id="products" class="py-20 bg-amber-100/50">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">Product Kami</h2>
             <p class="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">Nikmati berbagai pilihan menu dengan cita rasa terbaik dan harga terjangkau</p>
-            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Product 1 -->
+                <?php foreach ($featured as $f): ?>
                 <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
                     <div class="aspect-square bg-gray-200">
-                        <img src="Assets/kentang.jpg" alt="Kentang Goreng" class="w-full h-full object-cover">
+                        <?php if (!empty($f['image_path'])): ?>
+                        <img src="<?= htmlspecialchars($f['image_path']) ?>" alt="<?= htmlspecialchars($f['name']) ?>" class="w-full h-full object-cover">
+                        <?php endif; ?>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 text-gray-800">Kentang Goreng</h3>
-                        <p class="text-xl font-semibold text-red-700">Rp 15.000</p>
+                        <h3 class="text-2xl font-bold mb-2 text-gray-800"><?= htmlspecialchars($f['name']) ?></h3>
+                        <p class="text-xl font-semibold text-red-700">Rp <?= number_format((int)$f['price'], 0, ',', '.') ?></p>
                     </div>
                 </div>
-
-                <!-- Product 2 -->
-                <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
-                    <div class="aspect-square bg-gray-200">
-                        <img src="Assets/Esteh.jpg" alt="Teh O" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 text-gray-800">Teh O</h3>
-                        <p class="text-xl font-semibold text-red-700">Rp 8.000</p>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
-                    <div class="aspect-square bg-gray-200">
-                        <img src="Assets/menu mie.jpg" alt="Indomie Goreng Telor" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 text-gray-800">Indomie Goreng Telor</h3>
-                        <p class="text-xl font-semibold text-red-700">Rp 15.000</p>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
-
             <div class="text-center mt-12">
-                <a href="menu.html">
+                <a href="menu.php">
                     <button class="bg-gray-800 text-white px-12 py-4 rounded-lg text-lg font-semibold hover:bg-gray-700 transition duration-300 shadow-md">
                         LIHAT MENU LAINNYA
                     </button>
@@ -120,39 +106,37 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-20 bg-amber-100/50  ">
+    <section id="gallery" class="py-20 bg-amber-100/50">
         <h2 class="text-center text-2xl font-semibold mb-6">Galeri Kita</h2>
         <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 border-2 p-4 rounded-lg">
-            <img src="Assets/1 (1).jpg" alt="Gallery Image 1" class="object-cover rounded-xl">
-            <img src="Assets/1 (2).jpg" alt="Gallery Image 2" class="object-cover rounded-xl">
-            <img src="Assets/1 (3).jpg" alt="Gallery Image 3" class="object-cover rounded-xl">
-            <img src="Assets/Tempat.jpg" alt="Gallery Image 4" class="object-cover rounded-xl">
-            <img src="Assets/Tempat 2.jpg" alt="Gallery Image 5" class="object-cover rounded-xl">
+            <?php if (!empty($gallery)): ?>
+                <?php foreach ($gallery as $g): ?>
+                    <img src="<?= htmlspecialchars($g['image_path']) ?>" alt="Galeri" class="object-cover rounded-xl">
+                <?php endforeach; ?>
+            <?php else: ?>
+                <img src="Assets/1 (1).jpg" alt="Gallery Image 1" class="object-cover rounded-xl">
+                <img src="Assets/1 (2).jpg" alt="Gallery Image 2" class="object-cover rounded-xl">
+                <img src="Assets/1 (3).jpg" alt="Gallery Image 3" class="object-cover rounded-xl">
+                <img src="Assets/Tempat.jpg" alt="Gallery Image 4" class="object-cover rounded-xl">
+                <img src="Assets/Tempat 2.jpg" alt="Gallery Image 5" class="object-cover rounded-xl">
+            <?php endif; ?>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="location" class="border-t-2 border-black text-black py-12">
         <div class="container mx-auto px-4">
             <div class="flex justify-center grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left place-items-center md:place-items-start">
-                <!-- Location -->
                 <div>
                     <h3 class="text-2xl font-bold mb-4">Lokasi</h3>
                     <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i>Jl. Ketintang Madya</p>
                     <p class="mb-2">No. 82, Surabaya.</p>
                 </div>
-
-                <!-- Hours -->
                 <div>
-                  <h3 class="text-2xl font-bold mb-4">Batatua1928</h3>
+                    <h3 class="text-2xl font-bold mb-4">Batatua1928</h3>
                     <p class="mt-4 italic">"Semangat Muda Menolak Tua"</p>
                     <p class="mb-2"><i class="fas fa-clock mr-2"></i>Setiap Hari</p>
                     <p class="mb-2">09.00 - 00.00 WIB</p>
-                  
                 </div>
-
-                <!-- Contact -->
                 <div>
                     <h3 class="text-2xl font-bold mb-4">Contact us</h3>
                     <div class="flex justify-center md:justify-start space-x-4">
@@ -172,7 +156,6 @@
     </footer>
 
     <script>
-        // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
@@ -183,33 +166,26 @@
                 navbar.classList.add('bg-transparent');
             }
         });
-
-        // Mobile menu toggle
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('hidden');
         });
-
-        // Close mobile menu when clicking on a link
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', function() {
                 document.getElementById('mobile-menu').classList.add('hidden');
             });
         });
-
-        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
     </script>
 </body>
 </html>
+
+
