@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+     <link rel="icon" href="Assets/Logo Kedai Batatua 1928.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+    <title>Contact</title>
 </head>
 <body class="bg-amber-50 scroll-smooth">
    <header>
@@ -72,19 +75,180 @@
         <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/40"></div>
         <div class="relative z-10 text-center text-white px-4">
             <h1 class="text-4xl md:text-6xl font-bold mb-4 text-black">CONTACT US</h1>
-           <button class="mt-6 px-6 py-3 bg-yellow-700 text-black font-semibold rounded-2xl hover:bg-yellow-600 transition-colors duration-300">Instagram</button>
-           <button class="mt-6 px-6 py-3 bg-yellow-700 text-black font-semibold rounded-2xl hover:bg-yellow-600 transition-colors duration-300">Whatsapp</button>
-        </div>
-    </section>
+            <p class="text-lg md:text-2xl  text-black">Kita Menerima Reservasi Tempat untuk acara</p>
+            <a href="https://www.instagram.com/kedaibatatua.id/"> 
 
- <section id="about" class="py-20 bg-[#fff9e6]">
-        <div class="flex flex-col md:flex-row items-center justify-center space-x-0 md:space-x-6 p-6">
-            <img src="Assets/Tempat 2.jpg" alt="logo batatua" class="w-80 md:w-96 rounded-lg mb-6 md:mb-0">
-            <p class="max-w-md text-lg text-black text-center md:text-left">
-                Kedai Batatua 1928, tempat yang nyaman dengan menu lengkap dan harga terjangkau. Nikmati suasana hangat untuk makan, santai, dan berkumpul bersama teman atau keluarga.
-            </p>
+                <button class="mt-6 px-6 py-3 bg-yellow-700 text-black font-semibold rounded-2xl hover:bg-yellow-600 transition-colors duration-300">Instagram</button>
+                <button class="mt-6 px-6 py-3 bg-yellow-700 text-black font-semibold rounded-2xl hover:bg-yellow-600 transition-colors duration-300">Whatsapp</button>
+            </a>
         </div>
     </section>
+  <div class="bg-[#fff8f0] min-h-screen py-10 px-5">
+    <div class="max-w-3xl mx-auto">
+      <div class="bg-yellow-100 rounded-2xl shadow-lg p-8 border border-black">
+        <h2 class="text-3xl font-bold text-center mb-2">Form Reservasi</h2>
+        <p class="text-center text-gray-600 mb-8">Silakan isi formulir di bawah ini untuk melakukan reservasi</p>
+
+        <form id="reservationForm" class="space-y-6">
+          <!-- masukan nama -->
+          <div>
+            <label class="block mb-2 font-semibold text-gray-700">
+              <i class="fas fa-user mr-2 text-amber-700"></i>Nama Lengkap
+              <span class="text-red-500">*</span>
+            </label>
+            <input type="text" id="nama" required class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-amber-500 focus:border-transparent" placeholder="Masukkan nama lengkap Anda">
+          </div>
+
+          <!-- Nomor Wa -->
+          <div>
+            <label class="block mb-2 font-semibold text-gray-700">
+              <i class="fab fa-whatsapp mr-2 text-amber-700"></i>Nomor WhatsApp
+              <span class="text-red-500">*</span>
+            </label>
+            <input type="tel" id="whatsapp" required class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-amber-500 focus:border-transparent" placeholder="628xxxx">
+          </div>
+
+          <!-- Tanggal Reservasi -->
+          <div>
+            <label class="block mb-2 font-semibold text-gray-700">
+              <i class="fas fa-calendar-alt mr-2 text-amber-700"></i>Tanggal Reservasi
+              <span class="text-red-500">*</span>
+            </label>
+            <input type="date" id="tanggal" required class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+          </div>
+
+          <!-- Waktu Reservasi -->
+          <div>
+            <label class="block mb-2 font-semibold text-gray-700">
+              <i class="fas fa-clock mr-2 text-amber-700"></i>Waktu Reservasi
+              <span class="text-red-500">*</span>
+            </label>
+            <select id="waktu" required class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+              <option value="">Pilih waktu</option>
+              <option value="10:00">10:00 WIB</option>
+              <option value="11:00">11:00 WIB</option>
+              <option value="12:00">12:00 WIB</option>
+              <option value="13:00">13:00 WIB</option>
+              <option value="14:00">14:00 WIB</option>
+              <option value="15:00">15:00 WIB</option>
+              <option value="16:00">16:00 WIB</option>
+              <option value="17:00">17:00 WIB</option>
+              <option value="18:00">18:00 WIB</option>
+              <option value="19:00">19:00 WIB</option>
+            </select>
+          </div>
+          <div>
+            <label class="block mb-2 font-semibold text-gray-700">
+              <i class="fas fa-users mr-2 text-amber-700"></i>Jumlah Tamu
+              <span class="text-red-500">*</span>
+            </label>
+            <select id="jumlahTamu" required class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-amber-500 focus:border-transparent">
+              <option value="">Pilih jumlah tamu</option>
+              <option value="5">5 Orang</option>
+              <option value="6">6 Orang</option>
+              <option value="7">7 Orang</option>
+              <option value="8">8 Orang</option>
+              <option value="9">9 Orang</option>
+              <option value="10+">10+ Orang</option>
+            </select>
+          </div>
+          <div>
+            <label class="block mb-2 font-semibold text-gray-700">
+              <i class="fas fa-comment-alt mr-2 text-amber-700"></i>Catatan Khusus (Opsional)
+            </label>
+            <textarea id="catatan" rows="4" class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-amber-500 focus:border-transparent" placeholder="Contoh: Alergi makanan, posisi meja khusus, dll."></textarea>
+          </div>
+          <div class="text-center pt-4">
+            <button type="submit" class="bg-amber-700 hover:bg-amber-800 text-white px-8 py-4 rounded-lg font-semibold transition duration-300 shadow-lg text-lg w-full md:w-auto">
+              <i class="fas fa-paper-plane mr-2"></i>Kirim Reservasi
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Confirmation Section -->
+      <div id="confirmationSection" class="hidden bg-white rounded-2xl shadow-lg mt-8 p-8 border-2 border-green-500">
+        <div class="text-center mb-6">
+          <i class="fas fa-check-circle text-green-500 text-6xl mb-4"></i>
+          <h2 class="text-2xl font-bold text-gray-800">Reservasi Berhasil!</h2>
+          <p class="text-gray-600 mt-2">Kode Reservasi: <span id="kodeReservasi" class="font-bold text-amber-700"></span></p>
+        </div>
+
+        <div class="bg-gray-50 rounded-lg p-6 mb-6">
+          <h3 class="font-bold text-lg mb-4 text-gray-800">Detail Reservasi:</h3>
+          <div class="space-y-3 text-gray-700">
+            <div class="flex justify-between border-b pb-2">
+              <span class="font-semibold">Nama:</span>
+              <span id="confirmNama"></span>
+            </div>
+            <div class="flex justify-between border-b pb-2">
+              <span class="font-semibold">WhatsApp:</span>
+              <span id="confirmWA"></span>
+            </div>
+            <div class="flex justify-between border-b pb-2">
+              <span class="font-semibold">Tanggal:</span>
+              <span id="confirmTanggal"></span>
+            </div>
+            <div class="flex justify-between border-b pb-2">
+              <span class="font-semibold">Waktu:</span>
+              <span id="confirmWaktu"></span>
+            </div>
+            <div class="flex justify-between border-b pb-2">
+              <span class="font-semibold">Jumlah Tamu:</span>
+              <span id="confirmTamu"></span>
+            </div>
+            <div class="flex justify-between">
+              <span class="font-semibold">Catatan:</span>
+              <span id="confirmCatatan" class="text-right max-w-xs"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button onclick="sendToWhatsApp()" class="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold transition duration-300 shadow-lg text-lg w-full md:w-auto">
+            <i class="fab fa-whatsapp mr-2 text-xl"></i>Konfirmasi via WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </footer>
+    </section>
+      <footer id="location" class="border-t-2 border-black text-black py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-center grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left place-items-center md:place-items-start">
+    
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Lokasi</h3>
+                    <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i>Jl. Ketintang Madya</p>
+                    <p class="mb-2">No. 82, Surabaya.</p>
+                </div>
+
+                
+                <div>
+                  <h3 class="text-2xl font-bold mb-4">Batatua1928</h3>
+                    <p class="mt-4 italic">"Semangat Muda Menolak Tua"</p>
+                    <p class="mb-2"><i class="fas fa-clock mr-2"></i>Setiap Hari</p>
+                    <p class="mb-2">09.00 - 00.00 WIB</p>
+                  
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Contact us</h3>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="https://www.instagram.com/kedaibatatua.id/" class="w-12 h-12 bg-amber-700 rounded-full flex items-center justify-center hover:bg-amber-600 transition duration-300">
+                            <i class="fab fa-instagram text-white text-lg"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-amber-700 rounded-full flex items-center justify-center hover:bg-amber-600 transition duration-300">
+                            <i class="fab fa-whatsapp text-white text-lg"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-amber-700 rounded-full flex items-center justify-center hover:bg-amber-600 transition duration-300">
+                            <i class="fab fa-tiktok text-white text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
         <script>
 
@@ -142,6 +306,111 @@
                 }
             });
         });
+         let reservationData = {};
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('tanggal').setAttribute('min', today);
+
+    // Handle form submission
+    document.getElementById('reservationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Get form values
+      const nama = document.getElementById('nama').value.trim();
+      const whatsapp = document.getElementById('whatsapp').value.trim();
+      const tanggal = document.getElementById('tanggal').value;
+      const waktu = document.getElementById('waktu').value;
+      const jumlahTamu = document.getElementById('jumlahTamu').value;
+      const catatan = document.getElementById('catatan').value.trim() || '-';
+
+      // Format date
+      const dateObj = new Date(tanggal);
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const formattedDate = dateObj.toLocaleDateString('id-ID', options);
+
+      // Generate reservation code
+      const kode = 'RV' + Date.now().toString().slice(-8);
+
+      // Store data
+      reservationData = {
+        kode,
+        nama,
+        whatsapp,
+        tanggal: formattedDate,
+        waktu,
+        jumlahTamu,
+        catatan
+      };
+
+      // Display confirmation
+      document.getElementById('kodeReservasi').textContent = kode;
+      document.getElementById('confirmNama').textContent = nama;
+      document.getElementById('confirmWA').textContent = whatsapp;
+      document.getElementById('confirmTanggal').textContent = formattedDate;
+      document.getElementById('confirmWaktu').textContent = waktu + ' WIB';
+      document.getElementById('confirmTamu').textContent = jumlahTamu + ' Orang';
+      document.getElementById('confirmCatatan').textContent = catatan;
+
+      // Show confirmation section
+      document.getElementById('confirmationSection').classList.remove('hidden');
+      document.getElementById('confirmationSection').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    function sendToWhatsApp() {
+      const data = reservationData;
+      
+      let message = `*RESERVASI BATATUA1928*%0A%0A`;
+      message += `Kode Reservasi: *${data.kode}*%0A`;
+      message += `%0ANama: ${data.nama}%0A`;
+      message += `No. WhatsApp: ${data.whatsapp}%0A`;
+      message += `Tanggal: ${data.tanggal}%0A`;
+      message += `Waktu: ${data.waktu} WIB%0A`;
+      message += `Jumlah Tamu: ${data.jumlahTamu} Orang%0A`;
+      message += `Catatan: ${data.catatan}%0A`;
+      message += `%0ATerima kasih telah melakukan reservasi Kami tunggu kedatangan Anda di Batatua1928.%0A%0A`;
+
+      const nomorTujuan = '6281027512495';
+      const url = `https://wa.me/${nomorTujuan}?text=${message}`;
+      window.open(url, '_blank');
+    }
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('bg-white/95', 'backdrop-blur-sm', 'shadow-sm');
+        navbar.classList.remove('bg-transparent');
+      } else {
+        navbar.classList.remove('bg-white/95', 'backdrop-blur-sm', 'shadow-sm');
+        navbar.classList.add('bg-transparent');
+      }
+    });
+
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.add('hidden');
+      });
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
     </script>
 </body>
 </html>

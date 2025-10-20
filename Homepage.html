@@ -2,17 +2,16 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="Assets/Logo Kedai Batatua 1928.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kedai Batatua 1928</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-amber-50 scroll-smooth">
-    <!-- Header -->
     <header>
         <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300">
             <div class="container mx-auto px-6 flex items-center justify-between">
-                <!-- Logo -->
               <div class="flex items-center -ml-2">
                 <a href="dashboard-utama.html">
                             <h1 class="text-black-300 text-2xl">BATATUA1928</h1>
@@ -136,14 +135,14 @@
     <footer id="location" class="border-t-2 border-black text-black py-12">
         <div class="container mx-auto px-4">
             <div class="flex justify-center grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left place-items-center md:place-items-start">
-                <!-- Location -->
+    
                 <div>
                     <h3 class="text-2xl font-bold mb-4">Lokasi</h3>
                     <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i>Jl. Ketintang Madya</p>
                     <p class="mb-2">No. 82, Surabaya.</p>
                 </div>
 
-                <!-- Hours -->
+                
                 <div>
                   <h3 class="text-2xl font-bold mb-4">Batatua1928</h3>
                     <p class="mt-4 italic">"Semangat Muda Menolak Tua"</p>
@@ -151,8 +150,6 @@
                     <p class="mb-2">09.00 - 00.00 WIB</p>
                   
                 </div>
-
-                <!-- Contact -->
                 <div>
                     <h3 class="text-2xl font-bold mb-4">Contact us</h3>
                     <div class="flex justify-center md:justify-start space-x-4">
@@ -160,7 +157,7 @@
                             <i class="fab fa-instagram text-white text-lg"></i>
                         </a>
                         <a href="#" class="w-12 h-12 bg-amber-700 rounded-full flex items-center justify-center hover:bg-amber-600 transition duration-300">
-                            <i class="fa fa-envelope text-white text-lg"></i>
+                            <i class="fab fa-whatsapp text-white text-lg"></i>
                         </a>
                         <a href="#" class="w-12 h-12 bg-amber-700 rounded-full flex items-center justify-center hover:bg-amber-600 transition duration-300">
                             <i class="fab fa-tiktok text-white text-lg"></i>
@@ -184,7 +181,7 @@
             }
         });
 
-        // Mobile menu toggle
+        // Mobile menu 
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('hidden');
