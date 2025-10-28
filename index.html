@@ -8,12 +8,9 @@
 </head>
 <body>
     <div class="min-h-screen relative overflow-hidden">
-        <!-- Background Image -->
         <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('Assets/Hero\ Image\ \(1\).png');">
             <div class="absolute inset-0 bg-white/40 backdrop-blur-sm"></div>
         </div>
-
-        <!-- Login Form -->
         <div class="relative z-10 flex items-center justify-center min-h-screen px-4">
             <div class="w-full max-w-md">
                 <div class="text-center mb-8">
@@ -21,7 +18,6 @@
                 </div>
 
                 <div class="space-y-6">
-                    <!-- Email Field -->
                     <div>
                         <label for="email" class="block text-lg font-semibold text-gray-900 mb-2">
                             Username
@@ -32,8 +28,6 @@
                             class="w-full px-4 py-3 rounded-lg border-2 border-gray-300 bg-white focus:outline-none focus:border-gray-400 text-gray-900"
                          />
                     </div>
-
-                    <!-- Password Field -->
                     <div>
                         <label for="password" class="block text-lg font-semibold text-gray-900 mb-2">
                             Password
@@ -57,8 +51,6 @@
                             </button>
                         </div>
                     </div>
-
-                    <!-- Sign In Button -->
                     <button
                         onclick="handleLogin()"
                         class="w-full bg-gray-800 hover:bg-gray-900 text-white font-semibold py-3 rounded-lg transition-colors duration-200 text-lg"
@@ -90,7 +82,7 @@
             const password = document.getElementById('password').value;
             
             if (email && password) {
-               window.location.href ='dashboard-utama.html';
+               window.location.href ='Homepage.html';
             } else {
                 alert('Please fill in all fields');
             }
