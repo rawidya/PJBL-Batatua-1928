@@ -1,212 +1,311 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="Assets/Logo Kedai Batatua 1928.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kedai Batatua 1928</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <link rel="icon" href="Assets/Logo Kedai Batatua 1928.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kedai Batatua 1928</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    .nav-link {
+      position: relative;
+      color: #000;
+      transition: color 0.3s;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 2px;
+      background-color: #facc15;
+      transition: width 0.3s;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+     .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style>
 </head>
+
 <body class="bg-amber-50 scroll-smooth">
-    <header>
-        <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300">
-            <div class="container mx-auto px-6 flex items-center justify-between">
-              <div class="flex items-center -ml-2">
-                <a href="dashboard-utama.html">
-                            <h1 class="text-black-300 text-2xl">BATATUA1928</h1>
-              </a>
-                        </div> 
 
+  <!-- Navbar -->
+  <header>
+    <nav id="navbar"
+         class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300">
+      <div class="container mx-auto px-6 flex items-center justify-between py-2 md:py-3">
 
-                <!-- Desktop Menu -->
-                <ul class="hidden md:flex items-center space-x-10 text-sm font-semibold tracking-wide">
-                    <li><a href="#home" class="text-black hover:text-black-300 transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">HOME</a></li>
-                    <li><a href="#about" class="text-black hover:text-black-300 transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">ABOUT</a></li>
-                    <li><a href="menu.html" class="text-black hover:text-black-300 transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">MENU</a></li>
-                    <li><a href="contact.html" class="text-black hover:text-black-300 transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">CONTACT</a></li>
-                    <li><a href="#location" class="text-black hover:text-black-300 transition-colors duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">LOCATION</a></li>
-                </ul>
+        <!-- Logo -->
+        <a href="dashboard-utama.html" class="flex items-center space-x-2">
+          <img src="Assets/Logo Kedai Batatua 1928.png"
+               alt="Kedai Batatua 1928 Logo"
+               class="h-16 w-auto md:h-20 transition-all duration-300">
+        </a>
 
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden focus:outline-none">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex items-center space-x-8 text-sm font-semibold tracking-wide">
+          <li><a href="#home" class="nav-link">BERANDA</a></li>
+          <li><a href="#about" class="nav-link">TENTANG KAMI</a></li>
+          <li><a href="menu.html" class="nav-link">PRODUK</a></li>
+          <li><a href="contact.html" class="nav-link">KONTAK</a></li>
+          <li><a href="#location" class="nav-link">LOKASI</a></li>
+        </ul>
 
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-sm border-t border-gray-100">
-                <ul class="flex flex-col px-6 py-4 text-sm font-semibold tracking-wide">
-                    <li><a href="#home" class="block py-3 text-gray-700 hover:text-red-700 transition-colors duration-300">HOME</a></li>
-                    <li><a href="#about" class="block py-3 text-gray-700 hover:text-red-700 transition-colors duration-300">ABOUT</a></li>
-                    <li><a href="#products" class="block py-3 text-gray-700 hover:text-red-700 transition-colors duration-300">PRODUCTS</a></li>
-                    <li><a href="contact.html" class="block py-3 text-gray-700 hover:text-red-700 transition-colors duration-300">CONTACT</a></li>
-                    <li><a href="#location" class="block py-3 text-gray-700 hover:text-red-700 transition-colors duration-300">LOCATION</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden focus:outline-none">
+          <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('Assets/Hero Image (2).png');">
-        <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/40"></div>
-        <div class="relative z-10 text-center text-white px-4">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4 text-black">Batatua1928</h1>
-            <p class="text-white text-lg md:text-2xl mb-8 max-w-2xl mx-auto">Kedai Batatua 1928, tempat yang nyaman dengan menu lengkap dan harga terjangkau.</p>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu"
+           class="hidden md:hidden bg-white/95 backdrop-blur-sm border-t border-gray-100">
+        <ul class="flex flex-col px-6 py-4 text-sm font-semibold tracking-wide">
+          <li><a href="#home" class="block py-3 text-gray-700 hover:text-red-700 transition-colors">BERANDA</a></li>
+          <li><a href="#about" class="block py-3 text-gray-700 hover:text-red-700 transition-colors">TENTANG</a></li>
+          <li><a href="menu.html" class="block py-3 text-gray-700 hover:text-red-700 transition-colors">PRODUK</a></li>
+          <li><a href="contact.html" class="block py-3 text-gray-700 hover:text-red-700 transition-colors">KONTAK</a></li>
+          <li><a href="#location" class="block py-3 text-gray-700 hover:text-red-700 transition-colors">LOKASI</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <section id="home"
+           class="relative h-screen flex items-center justify-center bg-cover bg-center"
+           style="background-image: url('Assets/Hero Image (2).png');">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/40"></div>
+    <div class="relative z-10 text-center text-white px-4">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4 text-red-900">BATATUA1928</h1>
+      <p class="text-white text-lg md:text-2xl mb-8 max-w-2xl mx-auto">
+        Tempat yang nyaman dengan menu lengkap dan harga terjangkau
+      </p>
+    </div>
+  </section>
+
+  <section id="about" class="py-20 bg-[#fff9e6]">
+    <div class="flex flex-col md:flex-row items-center justify-center space-x-0 md:space-x-6 p-6">
+      <img src="Assets/Rectangle 1.png" alt="logo batatua"
+           class="w-80 md:w-96 rounded-lg mb-6 md:mb-0">
+      <p class="max-w-md text-lg text-black text-center md:text-left">
+        Kedai Batatua 1928, tempat yang nyaman dengan menu lengkap dan harga terjangkau.
+        Nikmati suasana hangat untuk makan, santai, dan berkumpul bersama teman atau keluarga.
+      </p>
+    </div>
+  </section>
+
+  <section id="products" class="py-20 bg-amber-100/50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">Produk Kami</h2>
+      <p class="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+        Nikmati berbagai pilihan menu dengan cita rasa terbaik dan harga terjangkau
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div onclick="toggleCard(this)" data-category="makanan-ringan"
+             class="group relative bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden cursor-pointer product-card">
+          <img src="Assets/kentang.jpg" alt="Kentang Goreng"
+               class="w-full h-48 object-cover transition-all duration-500 group-[.active]:scale-105">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold text-gray-800">Kentang Goreng</h3>
+            <p class="text-black font-bold mt-2">Rp 15.000</p>
+          </div>
+          <div class="absolute inset-0 bg-white/95 p-4 opacity-0 translate-x-5 scale-95 rounded-2xl transition-all duration-500 group-[.active]:opacity-100 group-[.active]:translate-x-0 group-[.active]:scale-100">
+            <h4 class="font-semibold mb-2">Deskripsi</h4>
+            <p>Kentang goreng renyah dengan saus sambal atau tomat.</p>
+          </div>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-[#fff9e6]">
-        <div class="flex flex-col md:flex-row items-center justify-center space-x-0 md:space-x-6 p-6">
-            <img src="Assets/Rectangle 1.png" alt="logo batatua" class="w-80 md:w-96 rounded-lg mb-6 md:mb-0">
-            <p class="max-w-md text-lg text-black text-center md:text-left">
-                Kedai Batatua 1928, tempat yang nyaman dengan menu lengkap dan harga terjangkau. Nikmati suasana hangat untuk makan, santai, dan berkumpul bersama teman atau keluarga.
-            </p>
+        <div onclick="toggleCard(this)" data-category="non-coffee"
+             class="group relative bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden cursor-pointer product-card">
+          <img src="Assets/Esteh.jpg" alt="Es Teh Manis" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold text-gray-800">Es Teh Manis</h3>
+            <p class="text-black font-bold mt-2">Rp 8.000</p>
+          </div>
+          <div class="absolute inset-0 bg-white/95 p-4 opacity-0 translate-x-5 scale-95 rounded-2xl transition-all duration-500 group-[.active]:opacity-100 group-[.active]:translate-x-0 group-[.active]:scale-100">
+            <h4 class="font-semibold mb-2">Deskripsi</h4>
+            <p>Minuman teh melati manis segar.</p>
+          </div>
         </div>
-    </section>
-
-    <!-- Products Section -->
-    <section id="products" class="py-20 bg-amber-100/50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">Product Kami</h2>
-            <p class="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">Nikmati berbagai pilihan menu dengan cita rasa terbaik dan harga terjangkau</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Product 1 -->
-                <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
-                    <div class="aspect-square bg-gray-200">
-                        <img src="Assets/kentang.jpg" alt="Kentang Goreng" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 text-gray-800">Kentang Goreng</h3>
-                        <p class="text-xl font-semibold text-red-700">Rp 15.000</p>
-                    </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
-                    <div class="aspect-square bg-gray-200">
-                        <img src="Assets/Esteh.jpg" alt="Teh O" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 text-gray-800">Teh O</h3>
-                        <p class="text-xl font-semibold text-red-700">Rp 8.000</p>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="bg-white rounded-3xl shadow-lg overflow-hidden">
-                    <div class="aspect-square bg-gray-200">
-                        <img src="Assets/menu mie.jpg" alt="Indomie Goreng Telor" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 text-gray-800">Indomie Goreng Telor</h3>
-                        <p class="text-xl font-semibold text-red-700">Rp 15.000</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center mt-12">
-                <a href="menu.html">
-                    <button class="bg-gray-800 text-white px-12 py-4 rounded-lg text-lg font-semibold hover:bg-gray-700 transition duration-300 shadow-md">
-                        LIHAT MENU LAINNYA
-                    </button>
-                </a>
-            </div>
+        <div onclick="toggleCard(this)" data-category="non-coffee"
+             class="group relative bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden cursor-pointer product-card">
+          <img src="Assets/Cokelat.jpg" alt="Coklat Dingin" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold text-gray-800">Coklat Dingin</h3>
+            <p class="text-black font-bold mt-2">Rp 18.000</p>
+          </div>
+          <div class="absolute inset-0 bg-white/95 p-4 opacity-0 translate-x-5 scale-95 rounded-2xl transition-all duration-500 group-[.active]:opacity-100 group-[.active]:translate-x-0 group-[.active]:scale-100">
+            <h4 class="font-semibold mb-2">Deskripsi</h4>
+            <p>Coklat kental manis disajikan dengan es batu.</p>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-20 bg-amber-100/50  ">
-        <h2 class="text-center text-2xl font-semibold mb-6">Galeri Kita</h2>
-        <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 border-2 p-4 rounded-lg">
-            <img src="Assets/1 (1).jpg" alt="Gallery Image 1" class="object-cover rounded-xl">
-            <img src="Assets/1 (2).jpg" alt="Gallery Image 2" class="object-cover rounded-xl">
-            <img src="Assets/1 (3).jpg" alt="Gallery Image 3" class="object-cover rounded-xl">
-            <img src="Assets/Tempat.jpg" alt="Gallery Image 4" class="object-cover rounded-xl">
-            <img src="Assets/Tempat 2.jpg" alt="Gallery Image 5" class="object-cover rounded-xl">
+      <div class="text-center mt-12">
+        <a href="menu.html">
+          <button
+            class="bg-gray-800 text-white px-12 py-4 rounded-lg text-lg font-semibold hover:bg-gray-700 transition duration-300 shadow-md">
+            LIHAT MENU LAINNYA
+          </button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galeri -->
+  <section id="gallery" class="py-20 bg-amber-100/50">
+  <h2 class="text-center text-2xl font-semibold mb-6">Galeri Kita</h2>
+
+  <div id="galleryContainer"
+    class="flex space-x-4 overflow-x-scroll scroll-smooth px-6 py-4 no-scrollbar">
+
+    <img src="Assets/1 (1).jpg" alt="Gallery Image 1"
+      class="w-80 h-56 object-cover rounded-xl transition-transform duration-500 hover:scale-110 flex-shrink-0 shadow-md">
+    <img src="Assets/1 (2).jpg" alt="Gallery Image 2"
+      class="w-80 h-56 object-cover rounded-xl transition-transform duration-500 hover:scale-110 flex-shrink-0 shadow-md">
+    <img src="Assets/1 (3).jpg" alt="Gallery Image 3"
+      class="w-80 h-56 object-cover rounded-xl transition-transform duration-500 hover:scale-110 flex-shrink-0 shadow-md">
+    <img src="Assets/Tempat.jpg" alt="Gallery Image 4"
+      class="w-80 h-56 object-cover rounded-xl transition-transform duration-500 hover:scale-110 flex-shrink-0 shadow-md">
+    <img src="Assets/Tempat 2.jpg" alt="Gallery Image 5"
+      class="w-80 h-56 object-cover rounded-xl transition-transform duration-500 hover:scale-110 flex-shrink-0 shadow-md">
+
+  </div>
+</section>
+  <!-- Footer -->
+  <footer id="location" class="border-t-2 border-black text-black py-12">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-center grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left place-items-center md:place-items-start">
+        <div>
+          <h3 class="text-2xl font-bold mb-4">Lokasi</h3>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.3415947101084!2d112.7226184!3d-7.315469800000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fb004ef3acf7%3A0x4e80d1bd83304316!2sKedai%20Batatua%201928%20Ketintang%20Surabaya!5e0!3m2!1sid!2sid!4v1762177314832!5m2!1sid!2sid"
+            width="350" height="230" style="border:0;" allowfullscreen=""
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i>Jl. Ketintang Madya</p>
+          <p class="mb-2">No. 82, Surabaya.</p>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="location" class="border-t-2 border-black text-black py-12">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-center grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left place-items-center md:place-items-start">
-    
-                <div>
-                    <h3 class="text-2xl font-bold mb-4">Lokasi</h3>
-                    <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i>Jl. Ketintang Madya</p>
-                    <p class="mb-2">No. 82, Surabaya.</p>
-                </div>
-
-                
-                <div>
-                  <h3 class="text-2xl font-bold mb-4">Batatua1928</h3>
-                    <p class="mt-4 italic">"Semangat Muda Menolak Tua"</p>
-                    <p class="mb-2"><i class="fas fa-clock mr-2"></i>Setiap Hari</p>
-                    <p class="mb-2">09.00 - 00.00 WIB</p>
-                  
-                </div>
-                <div>
-                    <h3 class="text-2xl font-bold mb-4">Contact us</h3>
-                    <div class="flex justify-center md:justify-start space-x-4">
-                        <a href="https://www.instagram.com/kedaibatatua.id/" class="w-12 h-12 bg-amber-700 rounded-full flex items-center justify-center hover:bg-amber-600 transition duration-300">
-                            <i class="fab fa-instagram text-white text-lg"></i>
-                        </a>
-                        <a href="#" class="w-12 h-12 bg-amber-700 rounded-full flex items-center justify-center hover:bg-amber-600 transition duration-300">
-                            <i class="fab fa-whatsapp text-white text-lg"></i>
-                        </a>
-                        <a href="#" class="w-12 h-12 bg-amber-700 rounded-full flex items-center justify-center hover:bg-amber-600 transition duration-300">
-                            <i class="fab fa-tiktok text-white text-lg"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <div>
+          <h3 class="text-2xl font-bold mb-4">Batatua1928</h3>
+          <p class="mt-4 italic">"Semangat Muda Menolak Tua"</p>
+          <p class="mb-2"><i class="fas fa-clock mr-2"></i>Setiap Hari</p>
+          <p class="mb-2">09.00 - 00.00 WIB</p>
         </div>
-    </footer>
+        <div>
+          <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
+          <div class="flex justify-center md:justify-start space-x-4">
+            <a href="https://www.instagram.com/kedaibatatua.id/"
+               class="w-12 h-12 bg-amber-700 rounded-full flex items-center justify-center hover:bg-amber-600 transition duration-300">
+              <i class="fab fa-instagram text-white text-lg"></i>
+            </a>
+            <a href="#"
+               class="w-12 h-12 bg-amber-700 rounded-full flex items-center justify-center hover:bg-amber-600 transition duration-300">
+              <i class="fab fa-whatsapp text-white text-lg"></i>
+            </a>
+            <a href="#"
+               class="w-12 h-12 bg-amber-700 rounded-full flex items-center justify-center hover:bg-amber-600 transition duration-300">
+              <i class="fab fa-tiktok text-white text-lg"></i>
+            </a>
+          </div>
+        </div>
 
-    <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-white/95', 'backdrop-blur-sm', 'shadow-sm');
-                navbar.classList.remove('bg-transparent');
-            } else {
-                navbar.classList.remove('bg-white/95', 'backdrop-blur-sm', 'shadow-sm');
-                navbar.classList.add('bg-transparent');
-            }
-        });
+      </div>
+    </div>
+  </footer>
+  <script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.add('bg-white/95', 'backdrop-blur-sm', 'shadow-sm');
+      navbar.classList.remove('bg-transparent');
+    } else {
+      navbar.classList.remove('bg-white/95', 'backdrop-blur-sm', 'shadow-sm');
+      navbar.classList.add('bg-transparent');
+    }
+  });
 
-        // Mobile menu 
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
+  // Mobile menu toggle
+  document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
 
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', function() {
-                document.getElementById('mobile-menu').classList.add('hidden');
-            });
-        });
+  // Close mobile menu on link click
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.add('hidden');
+    });
+  });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+  // Smooth scrolling
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(anchor.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+  function toggleCard(card) {
+    document.querySelectorAll('.group.active').forEach(c => {
+      if (c !== card) c.classList.remove('active');
+    });
+
+    card.classList.toggle('active');
+
+    // Background blur
+    const anyActive = document.querySelector('.group.active');
+    if (anyActive) {
+      document.body.classList.add('backdrop-blur-sm');
+    } else {
+      document.body.classList.remove('backdrop-blur-sm');
+    }
+  }
+  const gallery = document.getElementById('galleryContainer');
+  let scrollSpeed = 1;
+  let scrollInterval;
+
+  function startAutoScroll() {
+    scrollInterval = setInterval(() => {
+      gallery.scrollLeft += scrollSpeed;
+      if (gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth - 1) {
+        clearInterval(scrollInterval);
+        setTimeout(() => {
+          gallery.scrollTo({
+            left: 0,
+            behavior: "smooth"
+          });
+          setTimeout(startAutoScroll, 1000);
+        }, 500);
+      }
+    }, 20);
+  }
+
+  function stopAutoScroll() {
+    clearInterval(scrollInterval);
+  }
+
+  startAutoScroll();
+
+  gallery.addEventListener('mouseenter', stopAutoScroll);
+  gallery.addEventListener('mouseleave', startAutoScroll);
+</script>
+
 </body>
 </html>
