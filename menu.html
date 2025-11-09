@@ -1,236 +1,497 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Batatua1928 - Menu</title>
-  <link rel="icon" href="Assets/Logo Kedai Batatua 1928.png">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batatua1928 - Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+     <link rel="icon" href="Assets/Logo Kedai Batatua 1928.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+        .product-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeIn 0.6s ease-out;
+        }
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+        .category-btn {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .category-btn.active {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            transform: scale(1.05);
+        }
+        .category-btn.active::after {
+            width: 100%;
+        }
+        .search-container {
+            position: relative;
+        }
+        .search-container input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.3);
+        }
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .no-results.show {
+            display: block;
+        }
+    </style>
 </head>
-<body class="bg-amber-50 scroll-smooth">
+<body class="bg-gradient-to-b from-amber-50 via-yellow-50 to-amber-50 scroll-smooth">
+    <!-- Header -->
+    <header>
+        <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-500">
+            <div class="container mx-auto px-6 flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center -ml-2">
+                    <a href="Homepage.html" class="group">
+                       <img src="Assets/Logo Kedai Batatua 1928.png" class="h-16 w-auto md:h-30 trasnsition-transform duration-300 group-hover:scale-105" alt="Kedai Batatua 1928 Logo">
+                    </a>
+                </div>
+                <!-- Desktop Menu -->
+                <ul class="hidden md:flex items-center space-x-10 text-sm font-semibold tracking-wide">
+                    <li>
+                        <a href="Homepage.html" class="text-gray-800 hover:text-amber-600 transition-all duration-300 relative after:content-[''] after:absolute after:w-0 after:h-1 after:bg-gradient-to-r after:from-amber-500 after:to-yellow-500 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">HOME</a>
+                    </li>
+                    <li>
+                        <a href="Homepage.html#about" class="text-gray-800 hover:text-amber-600 transition-all duration-300 relative after:content-[''] after:absolute after:w-0 after:h-1 after:bg-gradient-to-r after:from-amber-500 after:to-yellow-500 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">ABOUT</a>
+                    </li>
+                    <li>
+                        <a href="menu.html" class="text-amber-600 font-bold transition-all duration-300 relative after:content-[''] after:absolute after:w-full after:h-1 after:bg-gradient-to-r after:from-amber-500 after:to-yellow-500 after:left-0 after:-bottom-1">MENU</a>
+                    </li>
+                    <li>
+                        <a href="contact.html" class="text-gray-800 hover:text-amber-600 transition-all duration-300 relative after:content-[''] after:absolute after:w-0 after:h-1 after:bg-gradient-to-r after:from-amber-500 after:to-yellow-500 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">CONTACT</a>
+                    </li>
+                    <li>    
+                        <a href="Homepage.html#location" class="text-gray-800 hover:text-amber-600 transition-all duration-300 relative after:content-[''] after:absolute after:w-0 after:h-1 after:bg-gradient-to-r after:from-amber-500 after:to-yellow-500 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full">LOCATION</a>
+                    </li>
+                </ul>
 
-  <!-- Navbar -->
-  <header>
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300">
-      <div class="container mx-auto px-6 flex items-center justify-between">
-        <div class="flex items-center -ml-2">
-          <span class="text-2xl font-bold text-black font-['Playfair_Display']">
-          <a href="dashboard-utama.html" class="flex items-center space-x-2">
-        <img src="Assets/Logo Kedai Batatua 1928.png" alt="Kedai Batatua 1928 Logo" class="h-16 w-auto md:h-20 transition-all duration-300">
-      </a>
-          </span>
-        </div>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden focus:outline-none text-gray-800 hover:text-amber-600 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
 
-        <ul class="hidden md:flex items-center space-x-10 text-sm font-semibold tracking-wide">
-          <li><a href="Homepage.html" class="hover:after:w-full relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300">BERANDA</a></li>
-          <li><a href="#about" class="hover:after:w-full relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300">TENTANG KAMI</a></li>
-          <li><a href="menu.html" class="hover:after:w-full relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300">MENU</a></li>
-          <li><a href="contact.html" class="hover:after:w-full relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300">KONTAK</a></li>
-          <li><a href="#location" class="hover:after:w-full relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300">LOKASI</a></li>
-        </ul>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden bg-white/98 backdrop-blur-md border-t border-gray-200 shadow-lg">
+                <ul class="flex flex-col px-6 py-4 text-sm font-semibold tracking-wide space-y-2">
+                    <li><a href="Homepage.html" class="block py-3 text-gray-700 hover:text-amber-600 transition-colors duration-300 border-b border-gray-100">HOME</a></li>
+                    <li><a href="Homepage.html#about" class="block py-3 text-gray-700 hover:text-amber-600 transition-colors duration-300 border-b border-gray-100">ABOUT</a></li>
+                    <li><a href="menu.html" class="block py-3 text-amber-600 font-bold transition-colors duration-300 border-b border-gray-100">MENU</a></li>
+                    <li><a href="contact.html" class="block py-3 text-gray-700 hover:text-amber-600 transition-colors duration-300 border-b border-gray-100">CONTACT</a></li>
+                    <li><a href="Homepage.html#location" class="block py-3 text-gray-700 hover:text-amber-600 transition-colors duration-300">LOCATION</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-        <button id="mobile-menu-btn" class="md:hidden focus:outline-none">
-          <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
-      </div>
-
-      <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-sm border-t border-gray-100">
-        <ul class="flex flex-col px-6 py-4 text-sm font-semibold tracking-wide">
-          <li><a href="Homepage.html" class="block py-3 hover:text-red-700">BERANDA</a></li>
-          <li><a href="#about" class="block py-3 hover:text-red-700">TENTANG KAMI</a></li>
-          <li><a href="menu.html" class="block py-3 hover:text-red-700">PRODUK</a></li>
-          <li><a href="contact.html" class="block py-3 hover:text-red-700">KONTAK</a></li>
-          <li><a href="#location" class="block py-3 hover:text-red-700">LOKASI</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-  <section id="home" class="relative h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('Assets/Hero Image (2).png');">
-        <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/40"></div>
+    <!-- Hero Section -->
+    <section id="home" class="relative h-64 md:h-80 flex items-center justify-center bg-cover bg-center mt-16" style="background-image: url('Assets/Hero Image (2).png');">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/50"></div>
         <div class="relative z-10 text-center text-white px-4">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4 text-red-900">BATATUA1928</h1>
-            <p class="text-white text-lg md:text-2xl mb-8 max-w-2xl mx-auto">Produk kami</p>
+            <h1 class="text-4xl md:text-6xl font-bold mb-2">
+                <span class="bg-gradient-to-r from-amber-300 via-yellow-300 to-amber-400 bg-clip-text text-transparent">Menu</span> <span class="text-white">Kami</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200">Pilih menu favoritmu</p>
         </div>
     </section>
-  <div class="bg-[#fff8f0] min-h-screen py-16 px-5">
-    <div class="flex justify-center gap-4 mb-10 flex-wrap">
-      <button class="hover:after:w-full relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300category-btn px-4 py-2" data-category="all">Semua</button>
-      <button class="hover:after:w-full relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300category-btn px-4 py-2" data-category="makanan-ringan">Makanan Ringan</button>
-      <button class="hover:after:w-full relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300category-btn px-4 py-2" data-category="makanan-berat">Makanan Berat</button>
-      <button class="hover:after:w-full relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300category-btn px-4 py-2" data-category="non-coffee">Non Coffee</button>
-      <button class="hover:after:w-full relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-yellow-300 after:left-0 after:-bottom-1 after:transition-all after:duration-300category-btn px-4 py-2" data-category="coffee">Coffee</button>
-    </div>
-    <!-- Grid Produk -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      <div onclick="toggleCard(this)" data-category="makanan-berat" class="group relative bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden transition-all duration-500 cursor-pointer hover:shadow-xl product-card">
-        <img src="Assets/mie bang.jpg" alt="Mie Bangladesh" class="w-full h-48 object-cover transition-all duration-500 group-[.active]:scale-105">
-        <div class="p-4"><h3 class="text-xl font-semibold text-gray-800">Mie Bangladesh</h3><p class="text-black font-bold mt-2">Rp 15.000</p></div>
-        <div class="absolute inset-0 bg-white/95 p-4 opacity-0 translate-x-5 scale-95 rounded-2xl transition-all duration-500 group-[.active]:opacity-100 group-[.active]:translate-x-0 group-[.active]:scale-100">
-          <h4 class="font-semibold mb-2">Deskripsi</h4><p>Mie telur khas Bangladesh yang gurih dan lembut.</p>
-        </div>
-      </div>
 
-      <div onclick="toggleCard(this)" data-category="makanan-berat" class="group relative bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden cursor-pointer product-card">
-        <img src="Assets/ayaam teriyaki.jpg" alt="Sego Ayam Teriyaki" class="w-full h-48 object-cover transition-all duration-500 group-[.active]:scale-105">
-        <div class="p-4"><h3 class="text-xl font-semibold text-gray-800">Sego Ayam Teriyaki</h3><p class="text-black font-bold mt-2">Rp 22.000</p></div>
-        <div class="absolute inset-0 bg-white/95 p-4 opacity-0 translate-x-5 scale-95 rounded-2xl transition-all duration-500 group-[.active]:opacity-100 group-[.active]:translate-x-0 group-[.active]:scale-100">
-          <h4 class="font-semibold mb-2">Deskripsi</h4><p>Nasi hangat dengan ayam teriyaki manis gurih khas Jepang.</p>
-        </div>
-      </div>
-      <div onclick="toggleCard(this)" data-category="makanan-ringan" class="group relative bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden cursor-pointer product-card">
-        <img src="Assets/sosis.jpg" alt="Sosis Crispy" class="w-full h-48 object-cover transition-all duration-500 group-[.active]:scale-105">
-        <div class="p-4"><h3 class="text-xl font-semibold text-gray-800">Sosis Crispy</h3><p class="text-black font-bold mt-2">Rp 16.000</p></div>
-        <div class="absolute inset-0 bg-white/95 p-4 opacity-0 translate-x-5 scale-95 rounded-2xl transition-all duration-500 group-[.active]:opacity-100 group-[.active]:translate-x-0 group-[.active]:scale-100">
-          <h4 class="font-semibold mb-2">Deskripsi</h4><p>Sosis goreng renyah dengan balutan tepung krispi.</p>
-        </div>
-      </div>
+    <div class="bg-gradient-to-b from-[#fff8f0] to-amber-50 min-h-screen py-12 px-5">
+        <div class="container mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text text-transparent">Product Kami</h2>
+            <p class="text-center text-gray-600 mb-8 text-lg">Temukan menu favoritmu dengan mudah</p>
 
-      <div onclick="toggleCard(this)" data-category="makanan-ringan" class="group relative bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden cursor-pointer product-card">
-        <img src="Assets/kentang.jpg" alt="Kentang Goreng" class="w-full h-48 object-cover transition-all duration-500 group-[.active]:scale-105">
-        <div class="p-4"><h3 class="text-xl font-semibold text-gray-800">Kentang Goreng</h3><p class="text-black font-bold mt-2">Rp 15.000</p></div>
-        <div class="absolute inset-0 bg-white/95 p-4 opacity-0 translate-x-5 scale-95 rounded-2xl transition-all duration-500 group-[.active]:opacity-100 group-[.active]:translate-x-0 group-[.active]:scale-100">
-          <h4 class="font-semibold mb-2">Deskripsi</h4><p>Kentang goreng renyah dengan saus sambal atau tomat.</p>
-        </div>
-      </div>
-
-  
-      <div onclick="toggleCard(this)" data-category="non-coffee" class="group relative bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden cursor-pointer product-card">
-        <img src="Assets/Esteh.jpg" alt="Es Teh Manis" class="w-full h-48 object-cover">
-        <div class="p-4"><h3 class="text-xl font-semibold text-gray-800">Es Teh Manis</h3><p class="text-black font-bold mt-2">Rp 8.000</p></div>
-        <div class="absolute inset-0 bg-white/95 p-4 opacity-0 translate-x-5 scale-95 rounded-2xl transition-all duration-500 group-[.active]:opacity-100 group-[.active]:translate-x-0 group-[.active]:scale-100">
-          <h4 class="font-semibold mb-2">Deskripsi</h4><p>Minuman teh melati manis segar.</p>
-        </div>
-      </div>
-
-      <div onclick="toggleCard(this)" data-category="non-coffee" class="group relative bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden cursor-pointer product-card">
-        <img src="Assets/Cokelat.jpg" alt="Coklat Dingin" class="w-full h-48 object-cover">
-        <div class="p-4"><h3 class="text-xl font-semibold text-gray-800">Coklat Dingin</h3><p class="text-black font-bold mt-2">Rp 18.000</p></div>
-        <div class="absolute inset-0 bg-white/95 p-4 opacity-0 translate-x-5 scale-95 rounded-2xl transition-all duration-500 group-[.active]:opacity-100 group-[.active]:translate-x-0 group-[.active]:scale-100">
-          <h4 class="font-semibold mb-2">Deskripsi</h4><p>Coklat kental manis disajikan dengan es batu.</p>
-        </div>
-      </div>
-
-     
-      <div onclick="toggleCard(this)" data-category="coffee" class="group relative bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden cursor-pointer product-card">
-        <img src="Assets/Cappucino.jpg" alt="Kopi Susu" class="w-full h-48 object-cover">
-        <div class="p-4"><h3 class="text-xl font-semibold text-gray-800">Cappucino</h3><p class="text-black font-bold mt-2">Rp 15.000</p></div>
-        <div class="absolute inset-0 bg-white/95 p-4 opacity-0 translate-x-5 scale-95 rounded-2xl transition-all duration-500 group-[.active]:opacity-100 group-[.active]:translate-x-0 group-[.active]:scale-100">
-          <h4 class="font-semibold mb-2">Deskripsi</h4><p>Kopi robusta berpadu susu manis creamy.</p>
-        </div>
-      </div>
-
-         <div onclick="toggleCard(this)" data-category="makanan-ringan" class="group relative bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden cursor-pointer product-card">
-        <img src="Assets/fish and chips.jpg" alt="Fish and chips" class="w-full h-48 object-cover">
-        <div class="p-4"><h3 class="text-xl font-semibold text-gray-800">Fish and chips</h3><p class="text-black font-bold mt-2">Rp 22.000</p></div>
-        <div class="absolute inset-0 bg-white/95 p-4 opacity-0 translate-x-5 scale-95 rounded-2xl transition-all duration-500 group-[.active]:opacity-100 group-[.active]:translate-x-0 group-[.active]:scale-100">
-          <h4 class="font-semibold mb-2">Deskripsi</h4><p>ikan fillet goreng berlapis tepung renyah yang disajikan bersama kentang goreng tebal</p>
-        </div>
-      </div>   <div onclick="toggleCard(this)" data-category="non-coffee" class="group relative bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden cursor-pointer product-card">
-        <img src="Assets/milo.jpg" alt="milo" class="w-full h-48 object-cover">
-        <div class="p-4"><h3 class="text-xl font-semibold text-gray-800">Milo</h3><p class="text-black font-bold mt-2">Rp 15.000</p></div>
-        <div class="absolute inset-0 bg-white/95 p-4 opacity-0 translate-x-5 scale-95 rounded-2xl transition-all duration-500 group-[.active]:opacity-100 group-[.active]:translate-x-0 group-[.active]:scale-100">
-          <h4 class="font-semibold mb-2">Deskripsi</h4><p>Susu Milo yang manis dan menyegarkan</p>
-        </div>
-      </div>   <div onclick="toggleCard(this)" data-category="coffee" class="group relative bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden cursor-pointer product-card">
-        <img src="Assets/america.jpg" alt="Kopi Susu" class="w-full h-48 object-cover">
-        <div class="p-4"><h3 class="text-xl font-semibold text-gray-800">Kopi americano</h3><p class="text-black font-bold mt-2">Rp 15.000</p></div>
-        <div class="absolute inset-0 bg-white/95 p-4 opacity-0 translate-x-5 scale-95 rounded-2xl transition-all duration-500 group-[.active]:opacity-100 group-[.active]:translate-x-0 group-[.active]:scale-100">
-          <h4 class="font-semibold mb-2">Deskripsi</h4><p>Kopi hitam yang membangkitkan semangat.</p>
-        </div>
-      </div>   <div onclick="toggleCard(this)" data-category="non-coffee" class="group relative bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden cursor-pointer product-card">
-        <img src="Assets/blue dragon.jpg" alt="blue dragon" class="w-full h-48 object-cover">
-        <div class="p-4"><h3 class="text-xl font-semibold text-gray-800">Blue dragon</h3><p class="text-black font-bold mt-2">Rp 15.000</p></div>
-        <div class="absolute inset-0 bg-white/95 p-4 opacity-0 translate-x-5 scale-95 rounded-2xl transition-all duration-500 group-[.active]:opacity-100 group-[.active]:translate-x-0 group-[.active]:scale-100">
-          <h4 class="font-semibold mb-2">Deskripsi</h4><p>Es Blue Dragon adalah minuman segar berwarna biru cerah yang biasanya terbuat dari campuran sirup blue curacao, soda, dan es batu. Rasanya manis dan sedikit asam, memberikan sensasi menyegarkan seperti minuman tropis</p>
-        </div>
-      </div>   <div onclick="toggleCard(this)" data-category="non-coffee" class="group relative bg-[#E2AE54] rounded-2xl shadow-lg overflow-hidden cursor-pointer product-card">
-        <img src="Assets/teh tarik.jpg" alt="Kopi Susu" class="w-full h-48 object-cover">
-        <div class="p-4"><h3 class="text-xl font-semibold text-gray-800">Teh tarik</h3><p class="text-black font-bold mt-2">Rp 15.000</p></div>
-        <div class="absolute inset-0 bg-white/95 p-4 opacity-0 translate-x-5 scale-95 rounded-2xl transition-all duration-500 group-[.active]:opacity-100 group-[.active]:translate-x-0 group-[.active]:scale-100">
-          <h4 class="font-semibold mb-2">Deskripsi</h4><p>Rasanya manis, creamy, dan harum teh yang kuat, cocok diminum hangat maupun dingin.</p>
-        </div>
-      </div>    
-     
-    </div>
-
-    <div class="flex justify-center mt-12">
-      <button onclick="history.back()" class="bg-gray-800 text-white px-10 py-3 rounded-lg text-lg font-semibold hover:bg-gray-700 transition duration-300 shadow-md">BACK</button>
-    </div>
-  </div>
-
-  <footer id="location" class="border-t-2 border-black text-black py-12">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-center grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left place-items-center md:place-items-start">
-    
-                <div>
-                    <h3 class="text-2xl font-bold mb-4">Lokasi</h3>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.3415947101084!2d112.7226184!3d-7.315469800000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fb004ef3acf7%3A0x4e80d1bd83304316!2sKedai%20Batatua%201928%20Ketintang%20Surabaya!5e0!3m2!1sid!2sid!4v1762177314832!5m2!1sid!2sid" width="350" height="230" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i>Jl. Ketintang Madya</p>
-                    <p class="mb-2">No. 82, Surabaya.</p>
+            <!-- Search Bar -->
+            <div class="max-w-2xl mx-auto mb-8 search-container">
+                <div class="relative">
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Cari menu favoritmu..."
+                        class="w-full px-6 py-4 pl-14 rounded-full border-2 border-amber-200 focus:border-amber-500 transition-all duration-300 text-lg shadow-lg"
+                    >
+                    <i class="fas fa-search absolute left-5 top-1/2 transform -translate-y-1/2 text-amber-500 text-xl"></i>
+                    <button id="clearSearch" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 hidden">
+                        <i class="fas fa-times-circle text-xl"></i>
+                    </button>
                 </div>
+            </div>
 
-                
-                <div>
-                  <h3 class="text-2xl font-bold mb-4">Batatua1928</h3>
-                    <p class="mt-4 italic">"Semangat Muda Menolak Tua"</p>
-                    <p class="mb-2"><i class="fas fa-clock mr-2"></i>Setiap Hari</p>
-                    <p class="mb-2">09.00 - 00.00 WIB</p>
-                  
-                </div>
-                <div>
-                    <h3 class="text-2xl font-bold mb-4">Contact us</h3>
-                    <div class="flex justify-center md:justify-start space-x-4">
-                        <a href="https://www.instagram.com/kedaibatatua.id/" class="w-12 h-12 bg-amber-700 rounded-full flex items-center justify-center hover:bg-amber-600 transition duration-300">
-                            <i class="fab fa-instagram text-white text-lg"></i>
-                        </a>
-                        <a href="#" class="w-12 h-12 bg-amber-700 rounded-full flex items-center justify-center hover:bg-amber-600 transition duration-300">
-                            <i class="fab fa-whatsapp text-white text-lg"></i>
-                        </a>
-                        <a href="#" class="w-12 h-12 bg-amber-700 rounded-full flex items-center justify-center hover:bg-amber-600 transition duration-300">
-                            <i class="fab fa-tiktok text-white text-lg"></i>
-                        </a>
+            <!-- menu filter -->
+            <div class="flex justify-center gap-4 mb-12 flex-wrap">
+                <button class="category-btn active px-6 py-3 rounded-full text-sm font-semibold bg-gradient-to-r from-amber-500 to-yellow-500 text-white shadow-lg" data-category="all">
+                    <i class="fas fa-th mr-2"></i>All
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full text-sm font-semibold text-gray-700 hover:text-amber-600 bg-white shadow-md hover:shadow-lg" data-category="makanan-ringan">
+                    <i class="fas fa-cookie-bite mr-2"></i>Makanan Ringan
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full text-sm font-semibold text-gray-700 hover:text-amber-600 bg-white shadow-md hover:shadow-lg" data-category="makanan-berat">
+                    <i class="fas fa-utensils mr-2"></i>Makanan Berat
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full text-sm font-semibold text-gray-700 hover:text-amber-600 bg-white shadow-md hover:shadow-lg" data-category="non-coffe">
+                    <i class="fas fa-glass-water mr-2"></i>Non Coffee
+                </button>
+                <button class="category-btn px-6 py-3 rounded-full text-sm font-semibold text-gray-700 hover:text-amber-600 bg-white shadow-md hover:shadow-lg" data-category="coffee">
+                    <i class="fas fa-coffee mr-2"></i>Coffee
+                </button>
+            </div>
+
+            <!-- No Results Message -->
+            <div id="noResults" class="no-results">
+                <i class="fas fa-search text-6xl text-gray-300 mb-4"></i>
+                <h3 class="text-2xl font-bold text-gray-600 mb-2">Menu tidak ditemukan</h3>
+                <p class="text-gray-500">Coba cari dengan kata kunci lain atau pilih kategori yang berbeda</p>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="product-card bg-gradient-to-br from-[#E2AE54] to-[#d4a050] rounded-2xl shadow-xl overflow-hidden group" data-category="makanan-berat" data-name="mie bangladesh">
+                    <div class="relative overflow-hidden">
+                        <img src="Assets/mie bang.jpg" alt="Mie Bangladesh Jadoel" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-amber-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                            <i class="fas fa-fire mr-1"></i>Hot
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-white transition-colors">Mie Bangladesh</h3>
+                        <p class="text-2xl font-bold text-amber-900 group-hover:text-white transition-colors">Rp 15.000</p>
+                        <div class="mt-3 flex items-center text-amber-900 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i class="fas fa-star text-yellow-300 mr-1"></i>
+                            <span class="text-sm font-semibold">4.8 Rating</span>
+                        </div>
                     </div>
                 </div>
+
+                <div onlick="toggleCard(this)" class="product-card bg-gradient-to-br from-[#E2AE54] to-[#d4a050] rounded-2xl shadow-xl overflow-hidden group transition-all duration-500 cursor-pointer hover:shadow-xl product-card" data-category="makanan-ringan" data-name="sosi crispy">
+                    <div class="relative overflow-hidden">
+                        <img src="Assets/sosis.jpg" alt="Sosi Crispy" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-white transition-colors">Sosi Crispy</h3>
+                        <p class="text-2xl font-bold text-amber-900 group-hover:text-white transition-colors">Rp 16.000</p>
+                        <div class="absolute inset-0 bg-white/95 p-4 opacity-0 translate-x-5 scale-95 rounded-2xl transition-all duration-500 group-[.active]:opacity-100 group-[.active]:translate-x-0 group-[.active]:scale-100 ">
+                            <h4>sosis enak</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card bg-gradient-to-br from-[#E2AE54] to-[#d4a050] rounded-2xl shadow-xl overflow-hidden group" data-category="makanan-berat" data-name="sego ayam teriyaki">
+                    <div class="relative overflow-hidden">
+                        <img src="Assets/ayaam teriyaki.jpg" alt="Sego Ayam Teriyaki" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                            <i class="fas fa-heart mr-1"></i>Favorite
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-white transition-colors">Sego Ayam Teriyaki</h3>
+                        <p class="text-2xl font-bold text-amber-900 group-hover:text-white transition-colors">Rp 22.000</p>
+                    </div>
+                </div>
+
+                <div class="product-card bg-gradient-to-br from-[#E2AE54] to-[#d4a050] rounded-2xl shadow-xl overflow-hidden group" data-category="makanan-ringan" data-name="kentang goreng">
+                    <div class="relative overflow-hidden">
+                        <img src="Assets/kentang.jpg" alt="Kentang Goreng" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-white transition-colors">Kentang Goreng</h3>
+                        <p class="text-2xl font-bold text-amber-900 group-hover:text-white transition-colors">Rp 15.000</p>
+                    </div>
+                </div>
+
+                <div class="product-card bg-gradient-to-br from-[#E2AE54] to-[#d4a050] rounded-2xl shadow-xl overflow-hidden group" data-category="non-coffe" data-name="teh o">
+                    <div class="relative overflow-hidden">
+                        <img src="Assets/Esteh.jpg" alt="Teh O" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-white transition-colors">Teh O</h3>
+                        <p class="text-2xl font-bold text-amber-900 group-hover:text-white transition-colors">Rp 8.000</p>
+                    </div>
+                </div>
+
+                <div class="product-card bg-gradient-to-br from-[#E2AE54] to-[#d4a050] rounded-2xl shadow-xl overflow-hidden group" data-category="makanan-berat" data-name="indomie goreng telor">
+                    <div class="relative overflow-hidden">
+                        <img src="Assets/menu mie.jpg" alt="Indomie Goreng Telor" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-white transition-colors">Indomie Goreng Telor</h3>
+                        <p class="text-2xl font-bold text-amber-900 group-hover:text-white transition-colors">Rp 15.000</p>
+                    </div>
+                </div>
+
+                <div class="product-card bg-gradient-to-br from-[#E2AE54] to-[#d4a050] rounded-2xl shadow-xl overflow-hidden group" data-category="non-coffe" data-name="teh tarik">
+                    <div class="relative overflow-hidden">
+                        <img src="Assets/teh tarik.jpg" alt="Teh Tarik" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-white transition-colors">Teh Tarik</h3>
+                        <p class="text-2xl font-bold text-amber-900 group-hover:text-white transition-colors">Rp 15.000</p>
+                    </div>
+                </div>
+
+                <div class="product-card bg-gradient-to-br from-[#E2AE54] to-[#d4a050] rounded-2xl shadow-xl overflow-hidden group" data-category="non-coffe" data-name="es cokelat jadoel">
+                    <div class="relative overflow-hidden">
+                        <img src="Assets/Cokelat.jpg" alt="Es Cokelat jadoel" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-white transition-colors">Es Cokelat jadoel</h3>
+                        <p class="text-2xl font-bold text-amber-900 group-hover:text-white transition-colors">Rp 16.000</p>
+                    </div>
+                </div>
+
+                <div class="product-card bg-gradient-to-br from-[#E2AE54] to-[#d4a050] rounded-2xl shadow-xl overflow-hidden group" data-category="coffee" data-name="ice americano">
+                    <div class="relative overflow-hidden">
+                        <img src="Assets/america.jpg" alt="americano" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-amber-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                            <i class="fas fa-coffee mr-1"></i>Best Seller
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-white transition-colors">Ice Americano</h3>
+                        <p class="text-2xl font-bold text-amber-900 group-hover:text-white transition-colors">Rp 9.000</p>
+                    </div>
+                </div>
+
+                <div class="product-card bg-gradient-to-br from-[#E2AE54] to-[#d4a050] rounded-2xl shadow-xl overflow-hidden group" data-category="makanan-ringan" data-name="fish and chips">
+                    <div class="relative overflow-hidden">
+                        <img src="Assets/fish and chips.jpg" alt="Fish and Chips" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-white transition-colors">Fish and Chips</h3>
+                        <p class="text-2xl font-bold text-amber-900 group-hover:text-white transition-colors">Rp 25.000</p>
+                    </div>
+                </div>
+
+                <div class="product-card bg-gradient-to-br from-[#E2AE54] to-[#d4a050] rounded-2xl shadow-xl overflow-hidden group" data-category="non-coffe" data-name="blue dragon">
+                    <div class="relative overflow-hidden">
+                        <img src="Assets/blue dragon.jpg" alt="Blue Dragon" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-white transition-colors">Blue Dragon</h3>
+                        <p class="text-2xl font-bold text-amber-900 group-hover:text-white transition-colors">Rp 17.000</p>
+                    </div>
+                </div>
+
+                <div class="product-card bg-gradient-to-br from-[#E2AE54] to-[#d4a050] rounded-2xl shadow-xl overflow-hidden group" data-category="makanan-ringan" data-name="roti bakar">
+                    <div class="relative overflow-hidden">
+                        <img src="Assets/roti-bakar.jpg" alt="Roti Bakar" class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-white transition-colors">Roti Bakar</h3>
+                        <p class="text-2xl font-bold text-amber-900 group-hover:text-white transition-colors">Rp 8.000</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back Button -->
+            <div class="flex justify-center mt-16 mb-8">
+              <a href="Homepage.html">
+
+                <button onclick="history.back()" class="bg-gradient-to-r from-gray-800 to-gray-900 text-white px-10 py-4 rounded-full text-lg font-bold hover:from-gray-700 hover:to-gray-800 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
+                  <i class="fas fa-arrow-left mr-2"></i>Kembali
+                </button>
+              </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="location" class="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+                <div class="animate-fade-in-up">
+                    <h3 class="text-3xl font-bold mb-6 text-amber-400">
+                        <i class="fas fa-map-marker-alt mr-2"></i>Lokasi
+                    </h3>
+                    <p class="text-gray-300 mb-2 text-lg">
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.3415947101084!2d112.7226184!3d-7.315469800000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fb004ef3acf7%3A0x4e80d1bd83304316!2sKedai%20Batatua%201928%20Ketintang%20Surabaya!5e0!3m2!1sid!2sid!4v1762177314832!5m2!1sid!2sid"
+                        width="350" height="230" style="border:0;" allowfullscreen=""
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                      </iframe>
+                      Jl. Ketintang Madya No. 82, Surabaya
+                    </p>
+                     <div>
+        </div>
+                </div>
+                <div class="animate-fade-in-up" style="animation-delay: 0.2s">
+                    <h3 class="text-3xl font-bold mb-6 text-amber-400">
+                        <i class="fas fa-clock mr-2"></i>Batatua1928
+                    </h3>
+                    <p class="text-2xl italic mb-4 text-yellow-300 font-semibold">"Semangat Muda Menolak Tua"</p>
+                    <div class="space-y-2 text-gray-300 text-lg">
+                        <p><i class="fas fa-calendar-day text-amber-500 mr-2"></i>Setiap Hari</p>
+                        <p><i class="fas fa-clock text-amber-500 mr-2"></i>09.00 - 00.00 WIB</p>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="animate-fade-in-up" style="animation-delay: 0.4s">
+                    <h3 class="text-3xl font-bold mb-6 text-amber-400">
+                        <i class="fas fa-phone mr-2"></i>Contact us
+                    </h3>
+                    <div class="flex justify-center md:justify-start space-x-4 mb-6">
+                        <a href="https://www.instagram.com/kedaibatatua.id/" target="_blank" class="w-14 h-14 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-110 shadow-lg">
+                            <i class="fab fa-instagram text-white text-xl"></i>
+                        </a>
+                        <a href="mailto:batatua1928@gmail.com" class="w-14 h-14 bg-gradient-to-br from-red-600 to-red-700 rounded-full flex items-center justify-center hover:from-red-700 hover:to-red-800 transition-all duration-300 transform hover:scale-110 shadow-lg">
+                            <i class="fas fa-envelope text-white text-xl"></i>
+                        </a>
+                        <a href="#" class="w-14 h-14 bg-gradient-to-br from-black to-gray-800 rounded-full flex items-center justify-center hover:from-gray-800 hover:to-black transition-all duration-300 transform hover:scale-110 shadow-lg">
+                            <i class="fab fa-tiktok text-white text-xl"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-4">Ikuti kami di media sosial untuk update terbaru!</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Kedai Batatua 1928. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-
-  <script>
-    // Navbar Scroll Effect
-    window.addEventListener('scroll', function() {
-      const navbar = document.getElementById('navbar');
-      navbar.classList.toggle('bg-white/95', window.scrollY > 50);
-      navbar.classList.toggle('shadow-sm', window.scrollY > 50);
-    });
-
-    // Mobile menu
-    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-      document.getElementById('mobile-menu').classList.toggle('hidden');
-    });
-
-    // Filter kategori
-    const categoryBtns = document.querySelectorAll('.category-btn');
-    const productCards = document.querySelectorAll('.product-card');
-    categoryBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const cat = btn.dataset.category;
-        productCards.forEach(card => {
-          card.style.display = (cat === 'all' || card.dataset.category === cat) ? 'block' : 'none';
+    <script>
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white/98', 'backdrop-blur-md', 'shadow-lg');
+                navbar.classList.remove('bg-transparent');
+            } else {
+                navbar.classList.remove('bg-white/98', 'backdrop-blur-md', 'shadow-lg');
+                navbar.classList.add('bg-transparent');
+            }
         });
-      });
-    });
 
-function toggleCard(card) {
-  // Tutup semua kartu aktif
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const productCards = document.querySelectorAll('.product-card');
+        const searchInput = document.getElementById('searchInput');
+        const clearSearchBtn = document.getElementById('clearSearch');
+        const noResults = document.getElementById('noResults');
+
+        let currentCategory = 'all';
+        let currentSearch = '';
+
+        // Category filter
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                categoryBtns.forEach(b => b.classList.remove('active', 'text-white'));
+                categoryBtns.forEach(b => {
+                    if (!b.classList.contains('active')) {
+                        b.classList.add('text-gray-700', 'hover:text-amber-600', 'bg-white');
+                    }
+                });
+                
+                this.classList.add('active', 'text-white');
+                this.classList.remove('text-gray-700', 'hover:text-amber-600', 'bg-white');
+                
+                currentCategory = this.getAttribute('data-category');
+                filterProducts();
+            });
+        });
+
+        // Search functionality
+        searchInput.addEventListener('input', function() {
+            currentSearch = this.value.toLowerCase().trim();
+            if (currentSearch) {
+                clearSearchBtn.classList.remove('hidden');
+            } else {
+                clearSearchBtn.classList.add('hidden');
+            }
+            filterProducts();
+        });
+
+        clearSearchBtn.addEventListener('click', function() {
+            searchInput.value = '';
+            currentSearch = '';
+            this.classList.add('hidden');
+            filterProducts();
+        });
+
+        function filterProducts() {
+            let visibleCount = 0;
+            
+            productCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                const name = card.getAttribute('data-name').toLowerCase();
+                
+                const matchesCategory = currentCategory === 'all' || category === currentCategory;
+                const matchesSearch = !currentSearch || name.includes(currentSearch);
+                
+                if (matchesCategory && matchesSearch) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 10);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+
+            if (visibleCount === 0) {
+                noResults.classList.add('show');
+            } else {
+                noResults.classList.remove('show');
+            }
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        function toggleCard(card) {
   document.querySelectorAll('.group.active').forEach(c => {
     if (c !== card) c.classList.remove('active');
   });
   card.classList.toggle('active');
 }
-  </script>
+    </script>
 </body>
 </html>
